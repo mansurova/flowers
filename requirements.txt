@@ -1,0 +1,12 @@
+fastai>=1.0
+keras-applications>=1.0
+keras-preprocessing>=1.0
+numpy>=1.18
+pandas>=0.24
+scikit-learn>=0.22
+scipy>=1.2
+seaborn>=0.8
+tensorboard>=2.0
+tensorflow>=2.0
+tensorflow-probability>=0.8
+torchvision>=0.5
