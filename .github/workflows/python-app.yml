@@ -10,7 +10,7 @@ on:
     branches: [ master ]
 
 jobs:
-  download_and_augment:
+  train_cnn:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -32,7 +32,7 @@ jobs:
 
     - name: Download Images
       run: |
-        mkdir img && cd img
+        mkdir output && mkdir img && cd img
         kaggle datasets download mgornergoogle/five-flowers
         kaggle datasets download ianmoone0617/flower-goggle-tpu-classification
       env:
@@ -45,10 +45,12 @@ jobs:
         unzip flower-goggle-tpu-classification.zip
         rm five-flowers.zip flower-goggle-tpu-classification.zip
         cd ..
-    - name: Run program
+    - name: Train CNN
       run: |
-        # stop the build if there are Python syntax errors or undefined names
-        python augment_data.py
+        python cnn_training.py
+    - name: Evaluate CNN
+      run: |
+        python cnn_evaluation.py
     - name: upload data
       uses: actions/upload-artifact@v2
       with:
