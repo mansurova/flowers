@@ -1,0 +1,14 @@
+numpy 
+tensorflow
+
+matplotlib
+opencv-python
+pandas
+seaborn
+pydot==1.2.3
+scikit-learn
+
+jupyterlab
+ipython
+# git+https://www.github.com/keras-team/keras-contrib.git
+# h5py

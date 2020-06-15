@@ -1,0 +1,10 @@
+data/*/
+data/*.zip
+
+# virtualenv
+env/*
+
+
+# scripts 
+scripts/.ipynb_checkpoints/*
+
