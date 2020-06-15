@@ -1,12 +1,16 @@
-fastai>=1.0
-keras-applications>=1.0
-keras-preprocessing>=1.0
-numpy>=1.18
-pandas>=0.24
-scikit-learn>=0.22
-scipy>=1.2
-seaborn>=0.8
-tensorboard>=2.0
-tensorflow>=2.0
-tensorflow-probability>=0.8
-torchvision>=0.5
+keras-preprocessing
+numpy
+pandas
+scikit-learn
+scipy
+seaborn
+tensorboard
+tensorflow>=2.2
+tensorflow-probability
+opencv-python
+pydot==1.2.3
+jupyterlab
+ipython
+# git+https://www.github.com/keras-team/keras-contrib.git
+# h5py
+Pillow
