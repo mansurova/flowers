@@ -1,14 +1,16 @@
-numpy 
-tensorflow
-
-matplotlib
-opencv-python
+keras-preprocessing
+numpy
 pandas
-seaborn
-pydot==1.2.3
 scikit-learn
-
+scipy
+seaborn
+tensorboard
+tensorflow>=2.2
+tensorflow-probability
+opencv-python
+pydot==1.2.3
 jupyterlab
 ipython
 # git+https://www.github.com/keras-team/keras-contrib.git
 # h5py
+Pillow

@@ -1,0 +1,64 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Python application
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  train_cnn:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest kaggle
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Download Images
+      run: |
+        mkdir output && mkdir img && cd img
+        kaggle datasets download mgornergoogle/five-flowers
+        kaggle datasets download ianmoone0617/flower-goggle-tpu-classification
+      env:
+        KAGGLE_USERNAME: ${{ secrets.KaggleUsername }}
+        KAGGLE_KEY: ${{ secrets.KaggleKey }}
+    - name: Extract Images
+      run: |
+        cd img
+        unzip five-flowers.zip
+        unzip flower-goggle-tpu-classification.zip
+        rm five-flowers.zip flower-goggle-tpu-classification.zip
+        cd ..
+    - name: Train CNN
+      run: |
+        python cnn_training.py
+    - name: Evaluate CNN
+      run: |
+        python cnn_evaluation.py
+    - name: upload data
+      uses: actions/upload-artifact@v2
+      with:
+        name: img
+        path: img
+    - name: upload output
+      uses: actions/upload-artifact@v2
+      with:
+        name: output
+        path: output
+
