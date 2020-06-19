@@ -1,0 +1,26 @@
+image: ody55eus/flowers
+
+run:
+  before_script:
+    # Download Models
+    - mkdir model
+    - cd model
+    - curl -c /tmp/cookies "https://drive.google.com/uc?export=download&id=1khWa08CCUla_99vjblgRPJXaZ0maXZBh" > /tmp/intermezzo.html
+    - curl -L -b /tmp/cookies "https://drive.google.com$(cat /tmp/intermezzo.html | grep -Po 'uc-download-link" [^>]* href="\K[^"]*' | sed 's/\&amp;/\&/g')" > model1.zip
+    - unzip model1.zip
+    - wget -O model2.zip "https://drive.google.com/uc?export=download&id=1E5P6lqd16yKh8tjDVdopZwKYQ1Z06fD1"
+    - unzip model2.zip
+    - cd ..
+    # Download Images
+    - mv /root/data .
+    # Create output folder
+    - mkdir output
+  script:
+    - cd scripts
+    - python data_preparation.py
+    - python cnn_split_test_val.py
+    - python cnn_evaluation.py
+    - cd ..
+  artifacts:
+    paths:
+      - output/*
