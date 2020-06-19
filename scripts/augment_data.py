@@ -11,6 +11,7 @@ def augment_images(folder,
                    horizontal_flip=True,
                    vertical_flip=True,
                    rescale=1. / 255,
+                   seed=42,
                    ):
     image_gen = ImageDataGenerator(
         # featurewise_center=True,
@@ -21,12 +22,14 @@ def augment_images(folder,
         zoom_range=zoom_range,
         horizontal_flip=horizontal_flip,
         vertical_flip=vertical_flip,
-        rescale=rescale)
+        rescale=rescale,
+        )
 
     data_gen = image_gen.flow_from_directory(batch_size=batch_size,
                                              directory=folder,
                                              shuffle=True,
                                              target_size=output_shape,
-                                             class_mode='sparse')
+                                             class_mode='sparse',
+                                             seed=seed)
 
     return data_gen
