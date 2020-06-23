@@ -13,6 +13,9 @@ from sklearn import metrics
 from augment_data import augment_images
 
 import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.set(context='talk', style='ticks')
 
 # Logging Configuration
 logging.basicConfig(level=logging.INFO,
@@ -62,35 +65,6 @@ classes = ['daisy', 'dandelion', 'rose', 'sunflower', 'tulip']
 # # Visualizing Predictions
 
 # In[19]:
-
-
-batch_size = 30
-img_height, img_width = 224, 224
-train_image_gen = augment_images(train_dir, 
-        batch_size=batch_size,
-        output_shape=(img_height, img_width),
-        )
-val_image_gen = augment_images(val_dir, 
-        batch_size=batch_size,
-        output_shape=(img_height, img_width),
-        )
-image_batch, label_batch = next(val_image_gen)
-
-predictions = model.predict(image_batch)
-predicted_ids = np.argmax(predictions, axis=-1)
-plt.figure(figsize=(16,15))
-for n in range(30):
-  plt.subplot(6,5,n+1)
-  plt.subplots_adjust(hspace = 0.3)
-  plt.imshow(image_batch[n])
-  color = "blue" if predicted_ids[n] == label_batch[n] else "red"
-  plt.title(classes[predicted_ids[n]].title(), color=color)
-  plt.axis('off')
-_ = plt.suptitle("Model predictions (blue: correct, red: incorrect)")
-plt.savefig("../output/cnn_model_predictions3.png")
-
-
-# In[115]:
 
 
 FIGSIZE = 16, 10
@@ -156,14 +130,6 @@ def plot_precision_recall(label_batch, y_pred, title):
 
 
 img_size = 224, 224
-train_image_gen = augment_images(train_dir, 
-        batch_size=4030,
-        output_shape=img_size,
-        )
-val_image_gen = augment_images(val_dir, 
-        batch_size=1010,
-        output_shape=img_size,
-        )
 test_image_gen = augment_images(test_dir, 
         batch_size=1260,
         output_shape=img_size,
@@ -174,26 +140,23 @@ metric = {}
 
 for mname, m in [("mobilenet", model), 
                  ("resnet", model2)]:
-    for title, image_gen in [('%s_Training' % mname, train_image_gen),
-                             ('%s_Validation' % mname, val_image_gen),
-                             ('%s_Test' % mname, test_image_gen),
-                            ]:
-        # Get predictions
-        logger.info('Get Predictions for %s' % title)
-        y_pred, y_true = get_predictions(image_gen, m)
-        predictions[title] = {'y_pred': y_pred,
-                              'y_true': y_true}
+    title, image_gen = ('%s_Test' % mname, test_image_gen)
+    # Get predictions
+    logger.info('Get Predictions for %s' % title)
+    y_pred, y_true = get_predictions(image_gen, m)
+    predictions[title] = {'y_pred': y_pred,
+                          'y_true': y_true}
 
-        # Calculate metrics
-        logger.info('Calculate Metrics for %s' % title)
-        metric[title] = get_metrics(y_true, y_pred)
+    # Calculate metrics
+    logger.info('Calculate Metrics for %s' % title)
+    metric[title] = get_metrics(y_true, y_pred)
 
-        # Print important informations
-        print(metric[title].get('report'))
+    # Print important informations
+    print(metric[title].get('report'))
 
-        # Plot important metrics
-        logger.info('Plotting for %s' % title)
-        plot_conf_mx(metric[title].get('conf_mx'), title)
-        plot_f1(metric[title].get('f1'), title)
-        plot_precision_recall(y_true, y_pred, title)
+    # Plot important metrics
+    logger.info('Plotting for %s' % title)
+    plot_conf_mx(metric[title].get('conf_mx'), title)
+    plot_f1(metric[title].get('f1'), title)
+    plot_precision_recall(y_true, y_pred, title)
 
