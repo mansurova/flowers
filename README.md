@@ -15,6 +15,14 @@ To run this code you need to download the images from the following Datasets:
 
 and put them into the folder `data/data1` (five-flowers) and `data/data2`.
 
+Important: The folder structure must appear as follows:
+| data |
+  | data1 |
+  | data2 |
+| flowers |
+
+Otherwise you will not be able to re-run the code.
+
 This is already done in the docker container [`ody55eus/flowers`](https://hub.docker.com/repository/docker/ody55eus/flowers/).
 
 
@@ -32,18 +40,16 @@ The following preprocessing steps are performed by [`data_preparation.py`](scrip
 * Split the dataset into train (80%) and test (20%) data.
 
 
+
 # Convolutional Neural Network (CNN)
 
 The convolutional neural network (CNN) training can be reconstructed with the file [`cnn_training.py`](scripts/cnn_training.py).
 Before training the CNN the training data are split again into train (80%) and validation (20%) data (this is performed by [`cnn_training.py`](scripts/cnn_training.py) or [`cnn_split_test_val.py`](scripts/cnn_split_test_val.py)).
-If you choose a higher number of `epochs`, you can probably improove the result.
+If you choose a higher number of `epochs`, you can probably improve the result.
 
+The Evaluation of the CNN models can be reproduced by running [`evaluation.py`](scripts/evaluation.py).
 
 # Support Vector Machines
 
-The support vector machines ...
+The support vector machines training and evaluation can be reproduced by [`svm.ipynb`](scripts/svm.ipynb)
 
-
-# Evaluation
-
-The Evaluation of the models can be reproduced by running [`evaluation.py`](scripts/evaluation.py).
