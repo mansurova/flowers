@@ -26,7 +26,6 @@ from augment_data import augment_images
 
 # Plotting Modules
 import matplotlib.pyplot as plt
-get_ipython().run_line_magic('matplotlib', 'inline')
 
 # Logging Configuration
 logging.basicConfig(level=logging.INFO,
@@ -40,7 +39,7 @@ logger.info('Tensorflow Version: %s' % tf.__version__)
 
 
 # Define classes
-classes = ['daisy', 'dandelion', 'roses', 'sunflowers', 'tulips']
+classes = ['daisy', 'dandelion', 'rose', 'sunflower', 'tulip']
 
 
 # # Data Preprocessing
@@ -51,9 +50,9 @@ classes = ['daisy', 'dandelion', 'roses', 'sunflowers', 'tulips']
 
 # Load images
 cwd = os.getcwd() # current working directory
-base_dir = os.path.join(cwd, 'img') # base image directory
+base_dir = os.path.join(cwd, 'data') # base image directory
 for cl in classes:
-    img_path = os.path.join(base_dir, 'original-jpegs', cl)
+    img_path = os.path.join(base_dir, 'flowers', 'train', cl)
     logger.debug('img_path: %s', img_path)
     images = glob(img_path + '/*.jpg')
     logger.info("%s:\t%s Images" % (cl, len(images)))
@@ -77,8 +76,6 @@ for cl in classes:
 # In[3]:
 
 
-cwd = os.getcwd() # current working directory
-base_dir = os.path.join(cwd, 'img') # base image directory
 train_dir = os.path.join(base_dir, 'train')
 val_dir = os.path.join(base_dir, 'val')
 
@@ -250,7 +247,7 @@ plt.savefig('output/own_model_training.png')
 fig = plt.figure(figsize=(15,15))
 
 data = next(val_data_gen)
-y_pred = model.predict(data, batch_size)
+y_pred = model.predict(data[0])
 for i in range(25):
     plt.subplot(5,5,i+1)
     image, typ = data[0][i,:,:,:], data[1][i]

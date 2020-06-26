@@ -1,5 +1,0 @@
-1
-https://www.kaggle.com/mgornergoogle/five-flowers
-
-2
-https://www.kaggle.com/ianmoone0617/flower-goggle-tpu-classification

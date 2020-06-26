@@ -123,11 +123,12 @@ def merge_data():
 
     # Delete remaining old folders
     if os.path.exists("../data/data1/"):
-        shutil.rmtree(path)
+        shutil.rmtree("../data/data1/")
     
     if os.path.exists("../data/data2/"):
         shutil.rmtree("../data/data2/")
 
+merge_data()
 
 def remove_exact_duplicates():
     """
@@ -319,8 +320,8 @@ def remove_duplicates(matches, visualize=True):
             os.remove(img2)
 
 
-# remove_exact_duplicates()
-# images, names, classes = load_data(resolution=100)
+remove_exact_duplicates()
+images, names, classes = load_data(resolution=100)
 
 
 """
@@ -336,7 +337,7 @@ print(len(matches))
 print(matches)
 print("Time elapsed: ", time.time() - t0)
 
-matches = [('tulip2_7408.jpeg', 'tulip2_2457.jpeg')]
+# Prepare splitting of the dataset into training and testing sets with respect to the ratios 80:20
 remove_duplicates(matches, visualize=True)
 """
 
