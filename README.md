@@ -16,10 +16,10 @@ To run this code you need to download the images from the following Datasets:
 and put them into the folder `data/data1` (five-flowers) and `data/data2`.
 
 Important: The folder structure must appear as follows:
-1. | data |
-    | data1 |
-    | data2 |
-2. | flowers |
+* | data |
+    *| data1 |
+    *| data2 |
+* | flowers |
 
 Otherwise you will not be able to re-run the code.
 
