@@ -24,11 +24,6 @@ Otherwise you will not be able to re-run the code.
 This is already done in the docker container [`ody55eus/flowers`](https://hub.docker.com/repository/docker/ody55eus/flowers/).
 
 
-# Training the model
-
-The training was processed with [Google Colab](https://drive.google.com/file/d/1xMJ1Kt4YBeIpqGIzPt1Km8ziwNW5a2Og/view?usp=sharing) to take advantage of the fast computation with GPU.
-
-
 # Data preparation
 
 The following preprocessing steps are performed by [`data_preparation.py`](scripts/data_preparation.py):
@@ -41,9 +36,17 @@ The following preprocessing steps are performed by [`data_preparation.py`](scrip
 
 # Convolutional Neural Network (CNN)
 
-The convolutional neural network (CNN) training can be reconstructed with the file [`cnn_training.py`](scripts/cnn_training.py).
+The convolutional neural network (CNN) training can be reconstructed with the file [`cnn_training.py`](scripts/cnn_training.py)
+
+
 Before training the CNN the training data are split again into train (80%) and validation (20%) data (this is performed by [`cnn_training.py`](scripts/cnn_training.py) or [`cnn_split_test_val.py`](scripts/cnn_split_test_val.py)).
 If you choose a higher number of `epochs`, you can probably improve the result.
+
+## Training the model
+
+The training was processed with [Google Colab](https://drive.google.com/file/d/1xMJ1Kt4YBeIpqGIzPt1Km8ziwNW5a2Og/view?usp=sharing) to take advantage of the fast computation with GPU.
+
+## Evaluation 
 
 The Evaluation of the CNN models can be reproduced by running [`evaluation.py`](scripts/evaluation.py).
 
