@@ -20,8 +20,9 @@ Important: The folder structure must appear as follows:
 * `flowers/`
 
 Otherwise you will not be able to re-run the code.
+It is recommended to run the code in a virtual environment (e.g. `virtualenv`). `requirements.txt` contains all the needed Python libraries.
 
-This is already done in the docker container [`ody55eus/flowers`](https://hub.docker.com/repository/docker/ody55eus/flowers/).
+Alternatively, it is already done in the docker container [`ody55eus/flowers`](https://hub.docker.com/repository/docker/ody55eus/flowers/).
 
 
 # Data preparation
