@@ -17,8 +17,8 @@ and put them into the folder `data/data1` (five-flowers) and `data/data2`.
 
 Important: The folder structure must appear as follows:
 1. | data |
-  | data1 |
-  | data2 |
+    | data1 |
+    | data2 |
 2. | flowers |
 
 Otherwise you will not be able to re-run the code.
