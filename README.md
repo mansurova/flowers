@@ -45,7 +45,7 @@ If you choose a higher number of `epochs`, you can probably improve the result.
 
 ## Training the model
 
-The training was processed with [Google Colab](https://drive.google.com/file/d/1xMJ1Kt4YBeIpqGIzPt1Km8ziwNW5a2Og/view?usp=sharing) to take advantage of the fast computation with GPU.
+The training was processed with [Google Colab](https://colab.research.google.com/drive/1xMJ1Kt4YBeIpqGIzPt1Km8ziwNW5a2Og) to take advantage of the fast computation with GPU.
 
 ## Evaluation 
 
