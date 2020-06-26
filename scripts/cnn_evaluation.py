@@ -50,8 +50,6 @@ model2 = tf.keras.models.load_model(model_name)
 
 cwd = os.getcwd() # current working directory
 base_dir = os.path.join(os.path.split(cwd)[0], 'data')
-train_dir = os.path.join(base_dir, 'train')
-val_dir = os.path.join(base_dir, 'val')
 test_dir = os.path.join(base_dir, 'flowers', 'test')
 
 
@@ -133,7 +131,10 @@ img_size = 224, 224
 test_image_gen = augment_images(test_dir, 
         batch_size=1260,
         output_shape=img_size,
-        )
+        rotation_range=0, width_shift_range=0.0,
+        height_shift_range=0.0, zoom_range=0.0,
+        horizontal_flip=False, vertical_flip=False
+    )
 
 predictions = {}
 metric = {}
