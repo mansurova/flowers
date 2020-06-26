@@ -1,6 +1,6 @@
 data/*/
 data/*.zip
-
+models/*.pkl
 # virtualenv
 env/*
 

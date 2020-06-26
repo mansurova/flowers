@@ -2,6 +2,7 @@ keras-preprocessing
 numpy
 pandas
 scikit-learn
+scikit-image
 scipy
 seaborn
 tensorboard
@@ -11,6 +12,6 @@ opencv-python
 pydot==1.2.3
 jupyterlab
 ipython
-# git+https://www.github.com/keras-team/keras-contrib.git
-# h5py
+
 Pillow
+matplotlib
