@@ -49,11 +49,14 @@ The training was processed with [Google Colab](https://colab.research.google.com
 
 ## Evaluation 
 
-The Evaluation of the CNN models can be reproduced by running [`evaluation.py`](scripts/evaluation.py).
+The Evaluation of the CNN models can be reproduced by running [`cnn_evaluation.py`](scripts/cnn_evaluation.py).
 
 # Support Vector Machines
 
 The support vector machines training and evaluation can be reproduced by [`svm.ipynb`](scripts/svm.ipynb)
+
+# Report and Presentation
+The [report](https://gitlab.com/ganymede/flowers-report) and [presentation](https://gitlab.com/ganymede/flowers-presentation) can be found on GitLab.
 
 # License
 The code is released under the [MIT license](https://opensource.org/licenses/MIT).
