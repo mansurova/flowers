@@ -55,3 +55,5 @@ The Evaluation of the CNN models can be reproduced by running [`evaluation.py`](
 
 The support vector machines training and evaluation can be reproduced by [`svm.ipynb`](scripts/svm.ipynb)
 
+# License
+The code is released under the [MIT license](https://opensource.org/licenses/MIT).
